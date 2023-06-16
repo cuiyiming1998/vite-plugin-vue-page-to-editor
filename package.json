@@ -1,18 +1,20 @@
 {
-  "name": "vite-plugin-page-to-editor",
+  "name": "vite-plugin-vue-page-to-editor",
   "type": "module",
   "version": "0.0.1",
   "packageManager": "pnpm@8.6.0",
   "description": "",
   "author": "cuiyiming <atlasyoungcym@163.com>",
   "license": "MIT",
-  "homepage": "https://github.com/cuiyiming1998/vite-plugin-page-to-editor#readme",
+  "homepage": "https://github.com/cuiyiming1998/vite-plugin-vue-page-to-editor#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cuiyiming1998/vite-plugin-page-to-editor.git"
+    "url": "git+https://github.com/cuiyiming1998/vite-plugin-vue-page-to-editor.git"
   },
-  "bugs": "https://github.com/cuiyiming1998/vite-plugin-page-to-editor/issues",
-  "keywords": [],
+  "bugs": "https://github.com/cuiyiming1998/vite-plugin-vue-page-to-editor/issues",
+  "keywords": [
+    "vite-plugin"
+  ],
   "sideEffects": false,
   "exports": {
     ".": {

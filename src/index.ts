@@ -9,6 +9,9 @@ const SOURCE_KEY = 'vue-code-to-page-path:'
 
 function getPluginPath() {
   const pluginPath = normalizePath(path.dirname(fileURLToPath(import.meta.url)))
+  // const pluginPath = path.dirname(fileURLToPath(import.meta.url))
+  console.log(path.dirname(fileURLToPath(import.meta.url)))
+  console.log(pluginPath)
   return pluginPath.replace(/\/dist$/, '/src')
 }
 

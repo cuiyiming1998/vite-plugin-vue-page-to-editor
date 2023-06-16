@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-vue-page-to-editor",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "packageManager": "pnpm@8.6.0",
   "description": "",
   "author": "cuiyiming <atlasyoungcym@163.com>",
@@ -38,8 +38,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "unbuild",
-    "dev": "unbuild --stub",
+    "build": "tsup src/*.ts --format cjs,esm --dts --splitting --clean",
+    "dev": "tsup src/*.ts --watch src",
+    "play": "npm -C playground run dev",
     "lint": "eslint .",
     "prepublishOnly": "nr build",
     "release": "bumpp && npm publish",
@@ -59,6 +60,7 @@
     "pnpm": "^8.6.0",
     "rimraf": "^5.0.1",
     "simple-git-hooks": "^2.8.1",
+    "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "unbuild": "^1.2.1",
     "vite": "^4.3.9",

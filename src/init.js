@@ -1,5 +1,5 @@
 function initDom() {
-  if (import.meta.env.MODE === 'development') {
+  if (import.meta.env?.MODE === 'development') {
     document.onmousedown = function (e) {
       if (e.shiftKey && e.button === 0) {
         e.preventDefault()

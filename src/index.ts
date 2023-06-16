@@ -60,7 +60,6 @@ export default function PageToEditor(option?: Option): any {
 
     resolveId(source: string) {
       const pluginPath = getPluginPath()
-      console.log(source)
       if (source.startsWith(SOURCE_KEY)) {
         const resolved = source.replace(SOURCE_KEY, `${pluginPath}/`)
         return resolved
@@ -118,7 +117,6 @@ export default function PageToEditor(option?: Option): any {
 }
 
 function getOs() {
-  'use strict'
   const platform = os.platform()
   return platform
 }

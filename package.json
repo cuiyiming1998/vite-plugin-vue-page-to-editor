@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-vue-page-to-editor",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.2.0",
   "packageManager": "pnpm@8.6.0",
   "description": "",
   "author": "cuiyiming <atlasyoungcym@163.com>",
@@ -20,21 +20,22 @@
     ".": {
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "import": "./dist/index.js"
     }
   },
   "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
-        "./dist/*"
+        "./dist/index.d.ts"
       ]
     }
   },
   "files": [
     "dist",
+    "src/*",
     "*.d.ts"
   ],
   "scripts": {

@@ -3,19 +3,17 @@ import { fileURLToPath } from 'node:url'
 import ChildProcess from 'node:child_process'
 import os from 'node:os'
 import { normalizePath } from 'vite'
-import type { Option } from './types.d'
+import type { Plugin } from 'vite'
+import type { Option } from './types'
 
 const SOURCE_KEY = 'vue-code-to-page-path:'
 
 function getPluginPath() {
   const pluginPath = normalizePath(path.dirname(fileURLToPath(import.meta.url)))
-  // const pluginPath = path.dirname(fileURLToPath(import.meta.url))
-  console.log(path.dirname(fileURLToPath(import.meta.url)))
-  console.log(pluginPath)
   return pluginPath.replace(/\/dist$/, '/src')
 }
 
-export default function PageToEditor(option?: Option): any {
+export default function PageToEditor(option?: Option): Plugin {
   function getCodeLine(code: string, id: string) {
     const codeList = code.split('\n')
     const processed = codeList.map((item, index) => {

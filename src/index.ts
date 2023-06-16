@@ -1,5 +1,7 @@
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import ChildProcess from 'node:child_process'
+import os from 'node:os'
 import { normalizePath } from 'vite'
 import type { Option } from './types.d'
 
@@ -56,14 +58,10 @@ export default function PageToEditor(option?: Option): any {
     },
     enforce: 'pre',
 
-    async load(id: string) {
-    },
-
     resolveId(source: string) {
       const pluginPath = getPluginPath()
       console.log(source)
       if (source.startsWith(SOURCE_KEY)) {
-        console.log(pluginPath)
         const resolved = source.replace(SOURCE_KEY, `${pluginPath}/`)
         return resolved
       }
@@ -77,7 +75,6 @@ export default function PageToEditor(option?: Option): any {
           .includes(id.substring(id.lastIndexOf('/') + 1))
       ) {
         const imported: any = `${code}\nimport '${SOURCE_KEY}init.js'`
-        console.log(imported)
         return {
           code: imported,
         }
@@ -88,20 +85,40 @@ export default function PageToEditor(option?: Option): any {
       return code
     },
 
-    // transformIndexHtml(html: any) {
-    //   return {
-    //     html,
-    //     tags: [
-    //       {
-    //         tag: 'script',
-    //         injectTo: 'head',
-    //         attrs: {
-    //           type: 'module',
-    //           src: `${SOURCE_KEY}`,
-    //         },
-    //       },
-    //     ],
-    //   }
-    // },
+    configureServer(server: any) {
+      server.middlewares.use((req: any, _: any, next: any) => {
+        if (req._parsedUrl.pathname === '/code-position') {
+          const path
+            = req._parsedUrl.query && req._parsedUrl.query.split('=')[1]
+          if (path && path !== 'null') {
+            if (process.env.VITE_EDITOR === 'webstorm') {
+              const linePath = path.split(':')[1]
+              const filePath = path.split(':')[0]
+              const platform = getOs()
+              if (platform === 'win32') {
+                ChildProcess.exec(
+                  `webstorm64.exe  --line ${linePath} ${filePath}`,
+                )
+              }
+              else {
+                ChildProcess.exec(
+                  `webstorm64  --line ${linePath} ${filePath}`,
+                )
+              }
+            }
+            else {
+              ChildProcess.exec(`code -r -g ${path}`)
+            }
+          }
+        }
+        next()
+      })
+    },
   }
+}
+
+function getOs() {
+  'use strict'
+  const platform = os.platform()
+  return platform
 }

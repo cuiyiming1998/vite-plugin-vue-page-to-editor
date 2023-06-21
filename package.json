@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.2.0",
   "packageManager": "pnpm@8.6.0",
-  "description": "",
+  "description": "shift + left-click to show code in your editor(WIP)",
   "author": "cuiyiming <atlasyoungcym@163.com>",
   "license": "MIT",
   "homepage": "https://github.com/cuiyiming1998/vite-plugin-vue-page-to-editor#readme",

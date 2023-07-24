@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -71,7 +71,7 @@ importers:
         version: 4.3.9(@types/node@18.16.16)
       vite-plugin-vue-page-to-editor:
         specifier: 0.1.0
-        version: link:..
+        version: 0.1.0
       vue-tsc:
         specifier: ^1.4.2
         version: 1.4.2(typescript@5.0.4)
@@ -4031,6 +4031,10 @@ packages:
     dependencies:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
+    dev: true
+
+  /vite-plugin-vue-page-to-editor@0.1.0:
+    resolution: {integrity: sha512-rjA9Z3k8QeUJokd1jdNEejYCPbd6AHaVRaT1KWvd6Ala3kkGcGA2GTUeeu5Q5pgzALT+/PrwD+Ctyq1DvVfsSA==}
     dev: true
 
   /vite@4.3.9(@types/node@18.16.16):
